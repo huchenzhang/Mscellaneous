@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Mscellaneous</string>
+
+    <!--loginActivity-->
+    <string name="phonenumber">手机号</string>
+    <string name="password">密码</string>
+
+    <string name="login">登陆</string>
+    <string name="forget">忘记密码</string>
+    <string name="register">注册</string>
+    <string name="login_content">登陆不成功？</string>
+
+    <!--registered-->
+    <string name="username">用户名</string>
+    <string name="confirm_password">确认密码</string>
+</resources>
