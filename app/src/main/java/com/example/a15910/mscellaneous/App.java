@@ -2,7 +2,6 @@ package com.example.a15910.mscellaneous;
 
 import android.app.Application;
 import android.content.Context;
-
 import org.litepal.LitePal;
 
 /**

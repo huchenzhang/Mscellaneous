@@ -9,6 +9,7 @@
     </data>
 
     <android.support.constraint.ConstraintLayout
+        android:background="@color/colorWhite"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -41,6 +42,7 @@
             android:inputType="phone"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintTop_toBottomOf="@id/la_username"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +63,7 @@
             app:counterMaxLength="6"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintTop_toBottomOf="@+id/la_phonenumber"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,6 +87,7 @@
             app:counterMaxLength="6"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintTop_toBottomOf="@+id/la_password1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
