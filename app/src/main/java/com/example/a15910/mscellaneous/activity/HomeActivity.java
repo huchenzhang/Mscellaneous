@@ -1,14 +1,15 @@
-package com.example.a15910.mscellaneous;
+package com.example.a15910.mscellaneous.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 
-import com.example.a15910.mscellaneous.model.AccountBean;
+import com.example.a15910.mscellaneous.R;
+import com.example.a15910.mscellaneous.bean.AccountBean;
 import com.example.a15910.mscellaneous.databinding.ActivityHomeBinding;
-
+import com.example.a15910.mscellaneous.view.AlertDialogController;
 import org.litepal.crud.DataSupport;
-
 import java.util.List;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -26,7 +27,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setCountView(this,R.layout.activity_home);
+        setCountView(this, R.layout.activity_home);
         initToolbar();
         initView();
     }
@@ -80,4 +81,52 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
                     }
                 });
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
+
+    /**
+     * 方法一
+     * 点击返回按钮时弹框提示
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            AlertDialogController.getInstance().showDialog(HomeActivity.this,"",
+                    "确定退出程序吗？",
+                    new AlertDialogController.DialogCallBack() {
+                        @Override
+                        public void positiveButton() {
+                            exit();//退出程序
+                        }
+                    });
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+    //用来计算返回键的点击间隔时间
+//    private long exitTime = 0;
+//    /***
+//     * 方法二
+//     * 两秒内点击两次直接退出程序
+//     */
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+//            if ((System.currentTimeMillis() - exitTime) > 2000) {
+//                //弹出提示，可以有多种方式
+//                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+//                exitTime = System.currentTimeMillis();
+//            } else {
+//                exit();//退出
+//            }
+//            return true;
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 }

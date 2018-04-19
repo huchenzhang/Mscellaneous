@@ -1,4 +1,4 @@
-package com.example.a15910.mscellaneous.model;
+package com.example.a15910.mscellaneous.bean;
 
 import org.litepal.annotation.Encrypt;
 import org.litepal.crud.DataSupport;
@@ -13,7 +13,7 @@ public class AccountBean extends DataSupport implements Serializable {
 
     private String username;//用户名
     private String phonenumber;//手机号
-    @Encrypt(algorithm = MD5)//加密了
+//    @Encrypt(algorithm = MD5)//加密了
     private String password;//密码
     private long createTime;//用户创建时间
 //    @Column(defaultValue = )

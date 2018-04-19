@@ -5,7 +5,7 @@
     <version value="2"/>
 
     <list>
-        <mapping class="com.example.a15910.mscellaneous.model.AccountBean" />
+        <mapping class="com.example.a15910.mscellaneous.bean.AccountBean" />
     </list>
 
 </litepal>

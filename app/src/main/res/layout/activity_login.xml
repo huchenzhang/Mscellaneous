@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.a15910.mscellaneous.LoginActivity">
+    tools:context="com.example.a15910.mscellaneous.activity.LoginActivity">
 
     <data>
         <variable
             name="login"
-            type="com.example.a15910.mscellaneous.LoginActivity"/>
+            type="com.example.a15910.mscellaneous.activity.LoginActivity"/>
     </data>
 
 
@@ -28,11 +28,9 @@
             android:layout_height="wrap_content"
             tools:ignore="ContentDescription" />
 
-        <!--用户名-->
+        <!--手机号-->
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/la_account"
-            app:counterMaxLength="11"
-            android:inputType="phone"
+            android:id="@+id/la_phonenumber"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="60dp"
@@ -43,6 +41,9 @@
             android:layout_height="wrap_content">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/te_phonenumber"
+                android:maxLength="11"
+                android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/phonenumber"/>
@@ -52,10 +53,9 @@
         <!--密码-->
         <android.support.design.widget.TextInputLayout
             android:id="@+id/la_password"
-            app:counterMaxLength="6"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/la_account"
+            app:layout_constraintTop_toBottomOf="@+id/la_phonenumber"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:passwordToggleEnabled="true"
@@ -64,6 +64,8 @@
             android:layout_height="wrap_content">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/te_password"
+                android:maxLength="6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textPassword"

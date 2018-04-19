@@ -1,6 +1,7 @@
-package com.example.a15910.mscellaneous;
+package com.example.a15910.mscellaneous.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -8,6 +9,11 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+
+import com.example.a15910.mscellaneous.App;
+import com.example.a15910.mscellaneous.R;
 
 /**
  * Activity的基类
@@ -15,16 +21,18 @@ import android.support.v7.widget.Toolbar;
  */
 
 public abstract class BaseActivity <T extends ViewDataBinding> extends AppCompatActivity {
-    private Toolbar toolbar;
     protected T binding;
+    private App app;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        app = (App)getApplication();
+        app.addActivity(this);
     }
 
     protected void initToolbar(){
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Title");
         toolbar.setSubtitle("SubTitle");
         toolbar.setLogo(R.mipmap.ic_launcher);
@@ -50,5 +58,26 @@ public abstract class BaseActivity <T extends ViewDataBinding> extends AppCompat
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        closeKeyboard();
+        app.removeActivity(this);
+    }
+
+    /**
+     * 退出程序
+     */
+    public void exit(){
+        app.clearAllActivity();
+    }
+
+    /**
+     * 关闭软键盘
+     */
+    private void closeKeyboard(){
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            assert imm != null;
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }

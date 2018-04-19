@@ -5,7 +5,7 @@
     <data>
         <variable
             name="registered"
-            type="com.example.a15910.mscellaneous.RegisteredActivity"/>
+            type="com.example.a15910.mscellaneous.activity.RegisteredActivity"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -16,8 +16,6 @@
         <!--账号-->
         <android.support.design.widget.TextInputLayout
             android:id="@+id/la_username"
-            app:counterMaxLength="11"
-            android:inputType="text"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="60dp"
@@ -29,6 +27,8 @@
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/te_username"
+                android:maxLength="11"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/username"/>
@@ -38,8 +38,6 @@
         <!--账号-->
         <android.support.design.widget.TextInputLayout
             android:id="@+id/la_phonenumber"
-            app:counterMaxLength="11"
-            android:inputType="phone"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
@@ -51,6 +49,8 @@
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/te_phonenumber"
+                android:maxLength="11"
+                android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/phonenumber"/>
@@ -60,7 +60,6 @@
         <!--密码-->
         <android.support.design.widget.TextInputLayout
             android:id="@+id/la_password1"
-            app:counterMaxLength="6"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
@@ -74,6 +73,7 @@
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/te_password1"
+                android:maxLength="6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
@@ -84,7 +84,6 @@
         <!--密码-->
         <android.support.design.widget.TextInputLayout
             android:id="@+id/la_password2"
-            app:counterMaxLength="6"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
@@ -100,6 +99,7 @@
                 android:id="@+id/te_password2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:maxLength="6"
                 android:inputType="textPassword"
                 android:hint="@string/confirm_password"/>
 

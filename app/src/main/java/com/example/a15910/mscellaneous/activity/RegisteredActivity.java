@@ -1,4 +1,4 @@
-package com.example.a15910.mscellaneous;
+package com.example.a15910.mscellaneous.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,10 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
-import com.example.a15910.mscellaneous.model.AccountBean;
+import com.example.a15910.mscellaneous.R;
+import com.example.a15910.mscellaneous.bean.AccountBean;
 import com.example.a15910.mscellaneous.databinding.ActivityRegisteredBinding;
+import com.example.a15910.mscellaneous.util.MD5Util;
 import com.example.a15910.mscellaneous.util.StringUtil;
 import org.litepal.crud.DataSupport;
 import java.util.List;
@@ -25,7 +27,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by hu on 2018/4/16.
  */
 
-public class RegisteredActivity extends BaseActivity<ActivityRegisteredBinding>{
+public class RegisteredActivity extends BaseActivity<ActivityRegisteredBinding> {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +47,7 @@ public class RegisteredActivity extends BaseActivity<ActivityRegisteredBinding>{
                 AccountBean accountBean = new AccountBean();
                 accountBean.setUsername(binding.teUsername.getText().toString());
                 accountBean.setPhonenumber(binding.tePhonenumber.getText().toString());
-                accountBean.setPassword(binding.tePhonenumber.getText().toString());
+                accountBean.setPassword(MD5Util.encrypt(binding.tePassword1.getText().toString()));
                 accountBean.setCreateTime(System.currentTimeMillis());
                 accountBean.setUpdateTime(System.currentTimeMillis());
                 accountBean.setImageHead("");
@@ -136,7 +138,9 @@ public class RegisteredActivity extends BaseActivity<ActivityRegisteredBinding>{
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(!TextUtils.isEmpty(binding.teUsername.getText().toString())){
+                if(TextUtils.isEmpty(binding.teUsername.getText().toString())){
+                    binding.laUsername.setError("用户名不能为空");
+                }else{
                     binding.laUsername.setErrorEnabled(false);
                 }
             }
@@ -156,7 +160,9 @@ public class RegisteredActivity extends BaseActivity<ActivityRegisteredBinding>{
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(!TextUtils.isEmpty(binding.tePassword1.getText().toString())){
+                if(TextUtils.isEmpty(binding.tePassword1.getText().toString())){
+                    binding.laPassword1.setError("密码不能为空");
+                }else{
                     binding.laPassword1.setErrorEnabled(false);
                 }
             }
@@ -176,7 +182,9 @@ public class RegisteredActivity extends BaseActivity<ActivityRegisteredBinding>{
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(!TextUtils.isEmpty(binding.tePassword2.getText().toString())){
+                if(TextUtils.isEmpty(binding.tePassword2.getText().toString())){
+                    binding.laPassword2.setError("密码不能为空");
+                }else{
                     binding.laPassword2.setErrorEnabled(false);
                 }
             }
@@ -197,9 +205,11 @@ public class RegisteredActivity extends BaseActivity<ActivityRegisteredBinding>{
             @Override
             public void afterTextChanged(Editable s) {
                 //检查手机号格式是否正确
-                if(!TextUtils.isEmpty(binding.tePhonenumber.getText().toString()) && !StringUtil.isMobileNO(binding.tePhonenumber.getText().toString())){
+                if(!StringUtil.isMobileNO(binding.tePhonenumber.getText().toString())){
                     binding.laPhonenumber.setError("手机号格式不符");
-                }else{
+                }else if(TextUtils.isEmpty(binding.tePhonenumber.getText().toString())){
+                    binding.laPhonenumber.setError("手机号不能为空");
+                }else {
                     binding.laPhonenumber.setErrorEnabled(false);
                 }
             }
@@ -259,7 +269,11 @@ public class RegisteredActivity extends BaseActivity<ActivityRegisteredBinding>{
                     public void onNext(List<AccountBean> o) {
                         if(o != null && o.size()>0){
                             binding.laPhonenumber.setError("该手机号已经注册");
-                        }else{
+                        } else if(!StringUtil.isMobileNO(binding.tePhonenumber.getText().toString())){
+                            binding.laPhonenumber.setError("手机号格式不符");
+                        }else if(TextUtils.isEmpty(binding.tePhonenumber.getText().toString())){
+                            binding.laPhonenumber.setError("手机号不能为空");
+                        }else {
                             binding.laPhonenumber.setErrorEnabled(false);
                         }
                     }

@@ -3,13 +3,13 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#578eec</item> <!--深蓝色-->
-        <item name="colorPrimaryDark">#578eec</item> <!--深蓝色-->
+        <item name="colorPrimary">#5890ee</item> <!--深蓝色-->
+        <item name="colorPrimaryDark">#5890ee</item> <!--深蓝色-->
     </style>
 
     <style name="LoginTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimaryDark">#f0f0f0</item> <!--深蓝色-->
+        <item name="colorPrimaryDark">#f0f0f0</item> <!--白色-->
     </style>
 
 </resources>
