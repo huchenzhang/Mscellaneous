@@ -4,11 +4,9 @@
     xmlns:toolbar="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    toolbar:logo="@mipmap/ic_launcher"
+    android:layout_height="?attr/actionBarSize"
+    toolbar:logo="@drawable/ic_menu_camera"
     android:background="?attr/colorPrimary"
-    toolbar:title="标题"
-    toolbar:subtitle="副标题"
     toolbar:titleTextColor="#ffffff">
 
 </android.support.v7.widget.Toolbar>

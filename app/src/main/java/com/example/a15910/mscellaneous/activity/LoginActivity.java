@@ -9,15 +9,10 @@ import android.widget.Toast;
 import com.example.a15910.mscellaneous.R;
 import com.example.a15910.mscellaneous.databinding.ActivityLoginBinding;
 import com.example.a15910.mscellaneous.bean.AccountBean;
-import com.example.a15910.mscellaneous.model.LocationData;
 import com.example.a15910.mscellaneous.presenter.DaoClient;
-import com.example.a15910.mscellaneous.util.MD5Util;
 import com.example.a15910.mscellaneous.view.ProgressDialogController;
-import org.litepal.crud.DataSupport;
 import java.util.List;
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -130,6 +125,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
                     public void onError(Throwable e) {
                         disposable.dispose();
                     }
+
 
                     @Override
                     public void onComplete() {

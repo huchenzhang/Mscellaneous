@@ -33,9 +33,7 @@ public abstract class BaseActivity <T extends ViewDataBinding> extends AppCompat
 
     protected void initToolbar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Title");
-        toolbar.setSubtitle("SubTitle");
-        toolbar.setLogo(R.mipmap.ic_launcher);
+        toolbar.setTitle("首页");
 
         //设置导航图标要在setSupportActionBar方法之后
         setSupportActionBar(toolbar);
