@@ -7,4 +7,6 @@ package com.example.a15910.mscellaneous.constant;
 
 public class Constants {
     public static final int DEFAULT_TIMEOUT = 8;
+    //sp命名
+    public static final String  SPUTIL = "mscellaneous";
 }

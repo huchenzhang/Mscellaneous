@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 
 import com.example.a15910.mscellaneous.App;
+import com.example.a15910.mscellaneous.constant.Constants;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -36,7 +37,7 @@ public final class SPUtil {
      * @return {@link SPUtil}
      */
     public static SPUtil getInstance(String spName) {
-        if (isSpace(spName)) spName = "spUtils";
+        if (isSpace(spName)) spName = Constants.SPUTIL;
         SPUtil sp = sSPMap.get(spName);
         if (sp == null) {
             sp = new SPUtil(spName);
