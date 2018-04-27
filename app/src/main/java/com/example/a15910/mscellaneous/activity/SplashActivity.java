@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -108,9 +109,18 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding>{
             SPUtil.getInstance().put("first",false);
             Toast.makeText(SplashActivity.this, "第一次", Toast.LENGTH_LONG).show();
             intent.setClass(this,GuideActivity.class);
-        }else{
-            Toast.makeText(SplashActivity.this, "不是第一次", Toast.LENGTH_LONG).show();
-            intent.setClass(this,LoginActivity.class);
+        }else{//不是第一次
+            //获取sp中存储的手机号
+            String phoneNumber = SPUtil.getInstance().getString("phonenumber");
+            //判断是否自动登陆
+            if(TextUtils.isEmpty(phoneNumber)){
+                Toast.makeText(SplashActivity.this, "不是第一次，且不自动登陆", Toast.LENGTH_LONG).show();
+                intent.setClass(this,LoginActivity.class);
+            }else {
+                Toast.makeText(SplashActivity.this, "不是第一次，自动登陆" + phoneNumber, Toast.LENGTH_LONG).show();
+                intent.putExtra("phonenumber",phoneNumber);
+                intent.setClass(this,HomeActivity.class);
+            }
         }
         startActivity(intent);
         finish();

@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 
 import com.example.a15910.mscellaneous.App;
 import com.example.a15910.mscellaneous.R;
@@ -31,10 +32,14 @@ public abstract class BaseActivity <T extends ViewDataBinding> extends AppCompat
         app.addActivity(this);
     }
 
-    protected void initToolbar(){
+    /**
+     * 初始化toolbar
+     * @param str title
+     */
+    protected void initToolbar(String str){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("首页");
-
+        TextView title = (TextView)findViewById(R.id.tv_title);
+        title.setText(str);
         //设置导航图标要在setSupportActionBar方法之后
         setSupportActionBar(toolbar);
 //        toolbar.setNavigationIcon(R.mipmap.ic_drawer_home);
