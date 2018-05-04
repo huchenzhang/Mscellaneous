@@ -46,7 +46,6 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding>
      */
     private void initView() {
         //侧边菜单点击事件监听
-        binding.navView.setNavigationItemSelectedListener(this);
     }
 
     /**
@@ -87,7 +86,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding>
                     public void onNext(List<AccountBean> o) {
                         disposable.dispose();
                         if(o != null && o.size()>0){
-                            o.get(0);
+                            setData(o.get(0));
                         }
                     }
 
@@ -101,6 +100,13 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding>
                         disposable.dispose();
                     }
                 });
+    }
+
+    /**
+     * 设置数据
+     */
+    private void setData(AccountBean bean){
+        findViewById(R.id.tv_name);
     }
 
     @Override
