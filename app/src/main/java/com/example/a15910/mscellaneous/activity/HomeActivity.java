@@ -6,17 +6,22 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.a15910.mscellaneous.R;
+import com.example.a15910.mscellaneous.adapter.HomeMenuAdapter;
 import com.example.a15910.mscellaneous.bean.AccountBean;
+import com.example.a15910.mscellaneous.bean.CommonBean;
 import com.example.a15910.mscellaneous.databinding.ActivityHomeBinding;
 import com.example.a15910.mscellaneous.util.SPUtil;
 import com.example.a15910.mscellaneous.view.AlertDialogController;
 import org.litepal.crud.DataSupport;
+
+import java.util.ArrayList;
 import java.util.List;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -45,7 +50,21 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding>
      * 初始化一些监听
      */
     private void initView() {
+        HomeMenuAdapter adapter = new HomeMenuAdapter(this,getData());
         //侧边菜单点击事件监听
+        binding.menuHeader.rvList.setLayoutManager(new LinearLayoutManager(this));
+        binding.menuHeader.rvList.setAdapter(adapter);
+    }
+
+    private List<CommonBean> getData(){
+        List<CommonBean> list = new ArrayList<>();
+        list.add(new CommonBean(R.drawable.ic_close_eye,"设置"));
+        list.add(new CommonBean(R.drawable.ic_close_eye,"设置"));
+        list.add(new CommonBean(R.drawable.ic_close_eye,"设置"));
+        list.add(new CommonBean(R.drawable.ic_close_eye,"设置"));
+        list.add(new CommonBean(R.drawable.ic_close_eye,"设置"));
+        list.add(new CommonBean(R.drawable.ic_close_eye,"设置"));
+        return list;
     }
 
     /**
@@ -106,7 +125,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding>
      * 设置数据
      */
     private void setData(AccountBean bean){
-        findViewById(R.id.tv_name);
+        binding.setAccount(bean);
     }
 
     @Override
